@@ -9,6 +9,7 @@ onready var attack_timer = $AttackTimer
 onready var player = get_parent().get_node("Player")
 
 var velocity = Vector2.ZERO
+var can_damage = false
 
 func _process(delta):
 	if player.global_position.x - global_position.x < 0:
@@ -38,6 +39,8 @@ func attack():
 	if attack_timer.is_stopped():
 		player_animation.play("Attack")
 		attack_timer.start()
+		if can_damage:
+			player.take_damage(1)
 
 
 func _on_AnimatedSprite_animation_finished():
@@ -45,3 +48,12 @@ func _on_AnimatedSprite_animation_finished():
 		player_animation.play("Idle")
 	else:
 		player_animation.play("Run")
+
+
+func _on_Hitbox_area_entered(area):
+	if area.get_parent().name == "Player":
+		can_damage = true
+
+func _on_Hitbox_area_exited(area):
+	if area.get_parent().name == "Player":
+		can_damage = false

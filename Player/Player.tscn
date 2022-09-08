@@ -7,8 +7,8 @@
 [ext_resource path="res://Swords/SWORD 7.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 14.0
-height = 36.0
+radius = 25.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
@@ -113,3 +113,10 @@ position = Vector2( 0, 5 )
 rotation = 0.767945
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
+
+[node name="HurtDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetector"]
+visible = false
+position = Vector2( -13, 22 )
+shape = SubResource( 1 )

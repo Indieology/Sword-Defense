@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/Skeletal Warrior- Sprite Sheet.png" type="Texture" id=2]
@@ -122,11 +122,14 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 15.0
+radius = 16.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 22.0
-height = 48.0
+height = 4.0
+
+[sub_resource type="CircleShape2D" id=30]
+radius = 26.0
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -134,8 +137,8 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.3, 2.3 )
 frames = SubResource( 13 )
-animation = "Run"
-frame = 3
+animation = "Attack"
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -147,13 +150,22 @@ position = Vector2( 4, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtDetector"]
 visible = false
-position = Vector2( 0, -3 )
+position = Vector2( -1, 14 )
 shape = SubResource( 2 )
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2( 2, 13 )
+shape = SubResource( 30 )
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="area_entered" from="HurtDetector" to="." method="_on_HurtDetector_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_exited" from="Hitbox" to="." method="_on_Hitbox_area_exited"]

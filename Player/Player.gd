@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var speed: int = 12000
+export var health: int = 3
 
 var velocity: Vector2 = Vector2.ZERO
 
@@ -44,3 +45,8 @@ func _physics_process(delta):
 	#velocity = velocity.normalized()
 	
 	move_and_slide(velocity * speed * delta, Vector2.UP)
+
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		hide()

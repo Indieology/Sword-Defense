@@ -1,6 +1,6 @@
 extends Node2D
 
-export var spawn_time_amount = 4 #seconds
+export var spawn_time_amount = 7 #seconds
 
 onready var spawn_timer = $Timer
 

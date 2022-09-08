@@ -111,5 +111,5 @@ color = Color( 0.686275, 0.0901961, 0.427451, 1 )
 [node name="Sprite" type="Sprite" parent="Sword"]
 position = Vector2( 3, 5 )
 rotation = 0.767945
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 1.7, 1.7 )
 texture = ExtResource( 5 )

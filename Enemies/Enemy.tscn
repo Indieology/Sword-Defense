@@ -51,28 +51,25 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 20.0
-height = 0.0
+[sub_resource type="CircleShape2D" id=14]
+radius = 15.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 22.0
 height = 48.0
 
 [node name="Enemy" type="KinematicBody2D"]
-collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.3, 2.3 )
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1, 16 )
-shape = SubResource( 1 )
+position = Vector2( 2, 18 )
+shape = SubResource( 14 )
 
 [node name="HurtDetector" type="Area2D" parent="."]
 position = Vector2( 4, 1 )

@@ -24,5 +24,4 @@ func _physics_process(delta):
 func _on_HurtDetector_area_entered(area):
 	if area.name == "Sword":
 		queue_free()
-	else:
-		velocity.x += rand_range(-10,10)
+

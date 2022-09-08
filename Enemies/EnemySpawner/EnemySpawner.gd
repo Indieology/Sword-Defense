@@ -1,5 +1,7 @@
 extends Node2D
 
+export var spawn_time_amount = 4 #seconds
+
 onready var spawn_timer = $Timer
 
 onready var skeleton_scene = preload("res://Enemies/Enemy.tscn")
@@ -13,4 +15,4 @@ func _process(delta):
 		var new_enemy = skeleton_scene.instance()
 		get_parent().add_child(new_enemy)
 		new_enemy.global_position = global_position
-		spawn_timer.start(2)
+		spawn_timer.start(spawn_time_amount)

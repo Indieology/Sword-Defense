@@ -52,26 +52,26 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 24.0
-height = 32.0
+radius = 20.0
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 22.0
 height = 48.0
 
 [node name="Enemy" type="KinematicBody2D"]
+collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.3, 2.3 )
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 3
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 4, 0 )
+position = Vector2( 1, 16 )
 shape = SubResource( 1 )
 
 [node name="HurtDetector" type="Area2D" parent="."]
